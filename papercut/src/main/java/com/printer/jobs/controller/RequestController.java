@@ -20,7 +20,6 @@ public class RequestController {
 	PapercutService papercutService;
 	@RequestMapping(value="/papercutjobs",method=RequestMethod.GET)
 	public TotalJobs getEstimates(){
-		
 		return (papercutService.getEstimates());
 	}
 	

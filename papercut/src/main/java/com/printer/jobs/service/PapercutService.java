@@ -28,10 +28,11 @@ public class PapercutService {
 		int total=0;
 		for (JobCostDetail job : joblist ){
 			calculatePricePerJob(job);
-			//total = total+ Integer.parseInt(job.getPrice());
-			System.out.println(job.getPrice());
+			//System.out.println("Job Detail"+joblist.indexOf(job)+1);
+			total = total+ Integer.parseInt(job.getPrice());
+			//System.out.println(job.getPrice());
 		}
-		System.out.println(joblist.toString());
+		//System.out.println(joblist.toString());
 		totalJ.setJobsList(joblist);
 		totalJ.setTotalCost(total);
 		System.out.println(totalJ.toString());
@@ -54,14 +55,43 @@ public class PapercutService {
 		}
 		if(colorPrice!=0 && bwPrice!=0){
 			pp=(cost.getColorPages()*colorPrice)+(cost.getBwPages()*bwPrice);
+			System.out.println("PRICE : "+pp);
 			cost.setPrice(Integer.toString(pp));
 		}
 	}
 	public  List<JobCostDetail> readDataFromFile(){
+		String csvFile = "C:/Users/user/Downloads/papercut1/src/main/resources/sample.csv";
+		BufferedReader br = null;
+		String line = "";
+		String cvsSplitBy = ",";
+		int iteration=0;
 		List<JobCostDetail> jobs = new ArrayList<JobCostDetail>();
-		
-		jobs.add(new JobCostDetail(25,10,false));
-		jobs.add(new JobCostDetail(55,13,true));
+		try {
+			br = new BufferedReader(new FileReader(csvFile));
+			while ((line = br.readLine()) != null) {
+				if (iteration == 0) {
+					iteration++;
+					continue;
+				}
+				String[] ppaper = line.split(cvsSplitBy);
+				jobs.add(new JobCostDetail(Integer.parseInt(ppaper[0]),Integer.parseInt(ppaper[1]),Boolean.parseBoolean(ppaper[2])));		
+				//jobs.add(new JobCostDetail(ppaper[0],ppaper[1],Boolean.parseBoolean(ppaper[2])));
+			}
+		}
+
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return jobs;
 	}
 	

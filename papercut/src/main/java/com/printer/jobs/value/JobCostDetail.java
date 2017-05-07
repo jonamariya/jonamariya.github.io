@@ -23,10 +23,9 @@ public class JobCostDetail extends IncomingJobDetail {
 	}
 	@Override
 	public String toString() {
-		return "JobCostDetail [bwPages=" + bwPages + ", price=" + price + ", getTotalPages()=" + getTotalPages()
-				+ ", isColorPages()=" + getColorPages() + ", isDoubleSided()=" + isDoubleSided() + ", toString()="
-				+ super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+		return "JobCostDetail [Total Pages="+super.getTotalPages()+", bwPages=" + bwPages + ", colorPages="+super.getColorPages()+", price=" + price + "]";
 	}
+	
 
 	
 }

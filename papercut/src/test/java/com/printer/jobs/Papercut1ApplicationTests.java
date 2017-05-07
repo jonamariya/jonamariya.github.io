@@ -35,7 +35,7 @@ public class Papercut1ApplicationTests {
 		papercutService.addPriceDetails(pd);
 		pd =new PricingDetails("A4", false, true, 10);
 		papercutService.addPriceDetails(pd);
-		pd =new PricingDetails("A4", false, true, 20);
+		pd =new PricingDetails("A4", true, true, 20);
 		papercutService.addPriceDetails(pd);
 	}
 }

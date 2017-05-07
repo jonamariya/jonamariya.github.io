@@ -29,11 +29,7 @@ public class IncomingJobDetail {
 		this.colorPages = colorPages;
 		this.doubleSided = doubleSided;
 	}
-	@Override
-	public String toString() {
-		return "IncomingJobDetail [totalPages=" + totalPages + ", colorPages=" + colorPages + ", doubleSided="
-				+ doubleSided + "]";
-	}
+	
 
 
 	
